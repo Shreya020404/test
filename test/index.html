@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Template 1</title>
+      <style>
+            body {
+                  background-color: rgba(251, 95, 12, 0.842);
+                  width: 99%;
+            }
+
+            header {
+                  float: right;
+                  margin: auto;
+                  width: 60%;
+                  height: 12vh;
+                  border: none;
+                  text-align: center;
+                  display: flex;
+                  flex-wrap: wrap;
+            }
+
+            #right-top {
+                  display: inline-block;
+                  margin: 3vh;
+                  font-weight: bolder;
+            }
+
+            #symbol {
+                  display: block;
+                  margin: 1vh 0 0 3vh;
+                  border: 2px solid rgb(139, 113, 113);
+                  text-align: center;
+                  height: 7vh;
+                  float: left;
+                  font-size: xx-large;
+                  color: rgb(67, 237, 175);
+                  background-color: rgb(247, 11, 7);
+                  font-family: cursive;
+            }
+
+            section {
+                  /*border: 2px solid black;*/
+                  height: 78vh;
+                  width: 80%;
+                  margin: auto;
+                  text-align: center;
+                  display: flex;
+                  justify-content: center;
+                  /*align-items: center;*/
+
+            }
+
+            #search-bar {
+                  margin: 2vh;
+                  height: 6vh;
+                  width: 60%;
+                  background-color: rgb(254, 254, 252);
+                  z-index: 2;
+                  text-align: left;
+                  color: black;
+                  font-weight: bolder;
+                  font-size: 1.5rem;
+                  border: none;
+                  border-radius: 10px;
+            }
+
+            video {
+                  margin: auto;
+                  position: absolute;
+                  width: 80%;
+                  z-index: -1;
+                  height: 80%;
+            }
+
+            #video-overlay {
+                  position: absolute;
+                  background-color: rgba(34, 44, 60, 0.9);
+                  height: 81%;
+                  width: 90%;
+                  z-index: 1;
+            }
+
+            #quote {
+                  border: none;
+                  height: 20vh;
+                  width: 60%;
+                  font-size: 200.2%;
+                  font-weight: bolder;
+                  font-family: cursive;
+                  color: white;
+                  position: absolute;
+                  z-index: 2;
+                  margin: 30vh 8vh 2vh 10vh;
+
+            }
+
+           
+            footer {
+                  display: block;
+                  display: flex;
+                  justify-content: center;
+            }
+
+            .liname {
+                  margin-top: 25px;
+            }
+      </style>
+</head>
+
+<body>
+      <header id="header">
+            <ul>
+                  <li id="right-top">HOME</li>
+                  <li id="right-top">ABOUT US</li>
+                  <li id="right-top">CATEGORIES</li>
+                  <li id="right-top">CONTACT US</li>
+                  
+            </ul>
+
+      </header>
+      <div id="symbol">
+            3codiots.tech
+      </div>
+      <section id="section">
+            <div id="video-overlay">
+
+            </div>
+            <video autoplay muted loop id="bg-video">
+                  <source src="course-video.mp4" type="video/mp4">
+            </video>
+            <input type="text" class="search-bar" id="search-bar" placeholder="SEARCH">
+            <div id="quote">
+                  "Have a beautiful day ahead..."
+                  <!-- "Today we are starting our own website #Satyam #Avanti #Ashu... " -->
+            </div>
+      </section>
+      
+      <footer id="contact">
+            <!-- <p id="email">#ASA_111@gmail.com</p>
+            <p id="insta">$ASA777</p> -->
+            <p id="name">
+                  <li class="liname">Avangtika</li> &nbsp; <li class="liname">Satyam</li> &nbsp; <li class="liname">
+                        Ashutosh</li>
+            </p>
+      </footer>
+</body>
+<script src="jquery-3_5_1.js" type="text/javascript"></script>
+<script type="text/javascript">
+      $(document).ready(function () {
+            function randomQuote() {
+                  $.ajax({
+                        url: "https://api.forismatic.com/api/1.0/?",
+                        dataType: "jsonp",
+                        data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
+                        success: function (response) {
+                              $("#quote").html("<p id='random_quote' class='lead text-center'>" +
+                                    response.quoteText + "<br/>&dash; " + response.quoteAuthor + " &dash;</p>");
+                        }
+                  });
+            }
+
+            $(function () {
+                  randomQuote();
+            });
+
+            $("button").click(function () {
+                  randomQuote();
+            });
+      })
+
+</script>
+
+</html>
